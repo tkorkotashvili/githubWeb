@@ -6,8 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserModule } from './modules/user/user.module';
 import { CoreModule } from './core/core.module';
-import { MaterialModule } from './core/material-module/material.module';
-
 @NgModule({
   declarations: [
     AppComponent
