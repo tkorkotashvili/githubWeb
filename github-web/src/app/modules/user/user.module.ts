@@ -40,6 +40,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatRippleModule } from '@angular/material/core';
 import { userReducers } from './store/reducers/user.reducer';
 import { RepositoryContributorsComponent } from './pages/repository-contributors/repository-contributors.component';
+import { UsersListComponent } from './users-list/users-list.component';
+import { ErrorHandleDialogComponent } from './error-handle-dialog/error-handle-dialog.component';
 export const MATERIAL_IMPORTS = [
   MatInputModule,
   MatButtonModule,
@@ -78,6 +80,8 @@ export const MATERIAL_IMPORTS = [
     ListComponent,
     DetailsComponent,
     RepositoryContributorsComponent,
+    UsersListComponent,
+    ErrorHandleDialogComponent,
 
   ],
   imports: [
@@ -86,6 +90,7 @@ export const MATERIAL_IMPORTS = [
     StoreModule.forFeature('users', userReducers),
     EffectsModule.forFeature([UserEffects]),
     ...MATERIAL_IMPORTS
-  ]
+  ],
+  entryComponents: [ErrorHandleDialogComponent]
 })
 export class UserModule { }

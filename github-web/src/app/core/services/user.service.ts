@@ -29,6 +29,6 @@ export class UserService {
   // }
 
   getUserRepositoryContributors(userName: string, repo: string): Observable<IUser[]> {
-    return this.httpClient.get<IUser[]>(`/repos/${userName}/${repo}/contributors`);
+    return this.httpClient.get<IUser[]>(`repos/${userName}/${repo}/contributors`);
   }
 }

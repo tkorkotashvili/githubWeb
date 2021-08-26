@@ -66,3 +66,8 @@ export const selectError = createSelector(
   selectUsers,
   (state: IUserState) => state.error
 )
+
+export const selectContriburorsList = createSelector(
+  selectUsers,
+  (state: IUserState) => state.contributors
+)

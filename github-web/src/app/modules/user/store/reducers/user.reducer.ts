@@ -51,18 +51,32 @@ export function userReducers(
         error: action.payload
       };
     }
+
     case EUserActions.GetUser: {
       return {
         ...state,
         isLoading: true
       };
     }
-
     case EUserActions.GetUserSuccess: {
       return {
         ...state,
         selectedUser: action.payload,
         isLoading: false
+      };
+    }
+    case EUserActions.GetUserError: {
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
+      };
+    }
+
+    case EUserActions.GetRepositories: {
+      return {
+        ...state,
+        isLoading: true,
       };
     }
     case EUserActions.GetRepositoriesSuccess: {
@@ -71,10 +85,31 @@ export function userReducers(
         repositories: action.payload
       };
     }
+    case EUserActions.GetRepositoriesError: {
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
+      };
+    }
+    case EUserActions.GetRpositoryContributors: {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
     case EUserActions.GetRpositoryContributorsSuccess: {
       return {
         ...state,
-        contributors: action.payload
+        isLoading: false,
+        contributors: action.payload,
+      };
+    }
+    case EUserActions.GetRpositoryContributorsError: {
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
       };
     }
 

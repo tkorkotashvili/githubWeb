@@ -1,0 +1,13 @@
+<div *ngIf="_users" class="justify-content-center d-flex flex-wrap">
+    <ng-container *ngFor="let user of _users">
+        <div class="m-5">
+            <mat-card matRipple class="user-card cursor-pointer" (click)="onNavigateToUser(user.login)">
+                <mat-card-header>
+                    <img mat-card-avatar src="{{user.avatar_url}}" alt="user photo">
+                    <div mat-card-title>{{user.login}}</div>
+                </mat-card-header>
+            </mat-card>
+        </div>
+    </ng-container>
+
+</div>
