@@ -1,19 +1,20 @@
-import { IUser } from "../../../../core/models/user.model";
+import { IRepository } from "@core/models/repository.model";
+import { IUser, IUserDetails } from "../../../../core/models/user.model";
 import { EUserActions, UserActions } from "../actions/user.actions";
 
 export interface IUserState {
     users: IUser[];
-    selectedUser: IUser;
-    repos: any[];
+    selectedUser: IUserDetails;
+    repositories: IRepository[];
     error: any;
-    selectedRepo: any;
+    selectedRepo: IRepository;
     isLoading: boolean
   }
   
   export const initialUserState: IUserState = {
     users: [],
     selectedUser: Object.assign({}),
-    repos: [],
+    repositories: [],
     error: '',
     selectedRepo: Object.assign({}),
     isLoading: false
@@ -25,19 +26,24 @@ export function userReducers  (
   state = initialUserState,
   action: UserActions
 ): IUserState {
-  debugger
+  
   switch (action.type) {
     case EUserActions.GetUsersSuccess: {
-      console.log('movida',action.payload)
       return {
         ...state,
         users: action.payload
       };
     }
-    case EUserActions.GetUsersError: {
+    case EUserActions.GetUserSuccess: {
       return {
         ...state,
-        error: action.payload
+        selectedUser: action.payload
+      };
+    }
+    case EUserActions.GetRepositoriesSuccess: {
+      return {
+        ...state,
+        repositories: action.payload
       };
     }
 

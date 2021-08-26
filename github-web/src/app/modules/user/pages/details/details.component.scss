@@ -1,0 +1,21 @@
+.user-card {
+    position: fixed;
+}
+
+:host::ng-deep .mat-card-avatar {
+    height: 250px !important;
+    width: 250px !important;
+}
+.header {
+    background-color: white;
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+.bold-text {
+    color: black;
+    font-weight: 600;
+}
