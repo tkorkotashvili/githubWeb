@@ -1,5 +1,6 @@
-<button class="mat-raised-button primary mt-2 ml-2">home</button>
-<div *ngIf="(user$ | async).login && (userRepositories$ | async).length > 0; else noData" class="container">
+<button class="mat-raised-button mt-2 ml-2" routerLink="/users">home</button>
+
+<div *ngIf="(user$ | async) && (userRepositories$ | async).length > 0; else noData" class="container">
     <div class="header sticky d-flex justify-content-center ">
         <h3 class="my-5">User Repositories List</h3>
     </div>
@@ -10,15 +11,15 @@
                 <mat-card-header>
                     <div class="d-flex flex-column">
                         <img mat-card-avatar src="{{(user$| async).avatar_url}}" alt="git user avatar">
-                        <div class="mt-3" mat-card-title>{{(user$| async).login}}</div>
+                        <div class="mt-3" mat-card-title>{{(user$ | async).login}}</div>
                     </div>
 
                 </mat-card-header>
                 <mat-card-content>
                     <div class="d-flex mt-3">
-                        <div class="accent-color"> Followers : <span class="bold-text">{{(user$|
+                        <div class="accent-color"> Followers : <span class="bold-text">{{(user$ |
                                 async).followers}}</span></div>
-                        <div class="ml-3"> Following : <span class="bold-text">{{(user$| async).following}}</span>
+                        <div class="ml-3"> Following : <span class="bold-text">{{(user$ | async).following}}</span>
                         </div>
                     </div>
 

@@ -1,4 +1,4 @@
-<button class="mat-raised-button mt-2 ml-2">home</button>
+<button class="mat-raised-button mt-2 ml-2" routerLink="/users">home</button>
 
 <div *ngIf="(contributors$ | async).length > 0; else noData" class="container">
   <div class="d-flex justify-content-center mt-5">
