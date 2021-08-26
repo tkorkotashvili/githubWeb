@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+//local imports
 import { DetailsComponent } from './pages/details/details.component';
 import { ListComponent } from './pages/list/list.component';
 import { RepositoryContributorsComponent } from './pages/repository-contributors/repository-contributors.component';

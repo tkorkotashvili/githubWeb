@@ -1,10 +1,10 @@
-<div *ngIf="users$; else noData" class="container">
+<button class="mat-raised-button primary mt-2 ml-2">home</button>
+
+<div *ngIf="(users$ | async).length > 0; else noData" class="container">
   <div class="d-flex justify-content-center mt-5">
     <h3>Git Users List</h3>
   </div>
-  <div *ngIf="!loadingFlag$" class="d-flex justify-content-center align-items-center">
-    <mat-spinner></mat-spinner>
-  </div>
+
   <app-users-list [users]="users$ | async" (onNavigate)="onNavigateToUser($event)"></app-users-list>
   <div class="d-flex justify-content-end mr-5">
     <mat-paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page"
@@ -16,6 +16,12 @@
 </div>
 <ng-template #noData>
   <div class="h-100 flex-perfect-center">
-asdasdasd
+    <div class="d-flex justify-content-center mt-5">
+      <h3>Git Users List</h3>
+    </div>
   </div>
+  <div class="d-flex justify-content-center">
+    <img src="../../../../../assets/svg/no-data.svg" alt="no-data svg">
+  </div>
+
 </ng-template>
