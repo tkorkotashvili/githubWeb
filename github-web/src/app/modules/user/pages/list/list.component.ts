@@ -19,8 +19,8 @@ export class ListComponent implements OnInit {
   error$: Observable<string>;
   users$: Observable<IUser[]>;
 
-
   defaultPagination = { pageIndex: 0, pageSize: 5, length: 10 } as PageEvent;
+
   constructor(private _store: Store<fromUser.State>,
     private _router: Router,
     private dialog: MatDialog) {
@@ -33,13 +33,17 @@ export class ListComponent implements OnInit {
     this.users$ = this._store.pipe(select(fromUser.selectUserList));
 
     this.error$ = this._store.pipe(select(fromUser.selectError));
+
     this.error$.subscribe(res => {
       if (res) {
-        this.dialog.open(ErrorHandleDialogComponent, {
-          data: {
-            errorMessage: this.error$
+        this.dialog.open(
+          ErrorHandleDialogComponent,
+          {
+            data: {
+              errorMessage: this.error$
+            }
           }
-        })
+        )
       }
     })
   }
