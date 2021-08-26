@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IUser } from '../models/user.model';
+import { PageEvent } from '@angular/material/paginator';
 
 
 @Injectable({
@@ -10,8 +11,8 @@ import { IUser } from '../models/user.model';
 export class UserService {
   constructor(private httpClient: HttpClient) { }
 
-  getUserList(): Observable<IUser[]> {
-    return this.httpClient.get<IUser[]>(`users`);
+  getUserList(pageOptions: PageEvent): Observable<IUser[]> {
+    return this.httpClient.get<IUser[]>(`users?since=${pageOptions.pageIndex}&per_page=${pageOptions.pageSize}`);
   }
   // getUser(userName: string): Observable<any> {
   //   return this.httpClient.get<any>(`users/${userName}`);

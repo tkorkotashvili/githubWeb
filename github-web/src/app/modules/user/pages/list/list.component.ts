@@ -26,7 +26,7 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._store.dispatch(new GetUsers());
+    this._store.dispatch(new GetUsers(this.defaultPagination));
     // this.users$ = this._store.pipe(takeUntil(this.destruct$),select(fromUser.selectUserList))
 
     this.users$ = this._store.pipe(select(selectUserList))
@@ -37,9 +37,9 @@ export class ListComponent implements OnInit {
     this._router.navigate(['user', username]);
   }
 
-  // onPageChange(event: PageEvent) {
-  //   this._store.dispatch(new GetUsers(event));
-  // }
+  onPageChange(event: PageEvent) {
+    this._store.dispatch(new GetUsers(event));
+  }
 }
 
 

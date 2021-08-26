@@ -11,12 +11,12 @@ export class UserEffects {
 
 getUsers$ = createEffect (() => this._actions$.pipe(
     ofType<GetUsers>(EUserActions.GetUsers),
-    mergeMap(() => { 
-      return this._userService.getUserList().pipe(
+    switchMap((action) => 
+        this._userService.getUserList(action.payload).pipe(
         map((data: IUser[]) => {
           return new GetUsersSuccess(data)
         }
-      ))})
+      )))
   ))
 
   constructor(

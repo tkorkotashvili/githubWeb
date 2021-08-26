@@ -1,3 +1,4 @@
+import { PageEvent } from '@angular/material/paginator';
 import { Action } from '@ngrx/store';
 import { IUser } from "../../../../core/models/user.model";
 
@@ -10,7 +11,7 @@ export enum EUserActions {
 
 export class GetUsers implements Action {
   public readonly type = EUserActions.GetUsers;
-  constructor() {}
+  constructor(public payload: PageEvent) {}
 }
 
 export class GetUsersSuccess implements Action {
