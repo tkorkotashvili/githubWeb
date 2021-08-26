@@ -34,7 +34,7 @@ export class ListComponent implements OnInit {
   }
 
   navigateToUser(username: string): void {
-    this._router.navigate(['user', username]);
+    this._router.navigate([`users/${username}/details`]);
   }
 
   onPageChange(event: PageEvent) {
