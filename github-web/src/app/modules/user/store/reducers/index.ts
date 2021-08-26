@@ -23,23 +23,7 @@ export const reducers: ActionReducerMap<UserState> = {
 
 export const getCoreModuleState = createFeatureSelector<UserState>('users');
 
-export const getUserState = createSelector(
-  getCoreModuleState,
-  (state: UserState) => state.users
-);
 
-export const users = {
-  selectUsers: createSelector(
-    getUserState,
-    (state: fromUser.IUserState) => state.users
-  ),
-
-
-  loading: createSelector(
-    getUserState,
-    (state: fromUser.IUserState) => state.isLoading
-  ),
-};
 const selectUsers = (state: any) => state.users;
 
 export const selectUserList = createSelector(
