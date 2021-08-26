@@ -14,41 +14,53 @@ export enum EUserActions {
   GetUserError = '[USer] get User Error',
 
   GetRepositories = '[User] Get Repositories',
-  GetRepositoriesSuccess = '[User] Get Repositories Success'
+  GetRepositoriesSuccess = '[User] Get Repositories Success',
+
+  GetRpositoryContributors = '[User] Get Repository Contributors',
+  GetRpositoryContributorsSuccess = '[User] Get Repository Contributors Success'
 }
 
 export class GetUsers implements Action {
   public readonly type = EUserActions.GetUsers;
-  constructor(public payload: PageEvent) {}
+  constructor(public payload: PageEvent) { }
 }
 
 export class GetUsersSuccess implements Action {
   public readonly type = EUserActions.GetUsersSuccess;
-  constructor(public payload: IUser[]) {}
+  constructor(public payload: IUser[]) { }
 }
 export class GetUsersError implements Action {
   public readonly type = EUserActions.GetUsersError;
-  constructor(public payload: IUser[]) {}
+  constructor(public payload: any) { }
 }
 
 export class GetUser implements Action {
   public readonly type = EUserActions.GetUser;
-  constructor(public payload: string) {}
+  constructor(public payload: string) { }
 }
 
 export class GetUserSuccess implements Action {
   public readonly type = EUserActions.GetUserSuccess;
-  constructor(public payload: IUserDetails) {}
+  constructor(public payload: IUserDetails) { }
 }
 export class GetRepositories implements Action {
   public readonly type = EUserActions.GetRepositories;
-  constructor(public payload: string) {}
+  constructor(public payload: string) { }
 }
 
 export class GetRepositoriesSuccess implements Action {
   public readonly type = EUserActions.GetRepositoriesSuccess;
-  constructor(public payload: IRepository[]) {}
+  constructor(public payload: IRepository[]) { }
+}
+export class GetRpositoryContributors implements Action {
+  public readonly type = EUserActions.GetRpositoryContributors;
+  constructor(public payload: { userName: string, repository: string }) { }
+}
+
+export class GetRpositoryContributorsSuccess implements Action {
+  public readonly type = EUserActions.GetRpositoryContributorsSuccess;
+  constructor(public payload: IUser[]) { }
 }
 
 
-export type UserActions = GetUsers | GetUsersSuccess | GetUsersError | GetUser | GetUserSuccess | GetRepositories |GetRepositoriesSuccess;
+export type UserActions = GetUsers | GetUsersSuccess | GetUsersError | GetUser | GetUserSuccess | GetRepositories | GetRepositoriesSuccess | GetRpositoryContributors | GetRpositoryContributorsSuccess;

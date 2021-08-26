@@ -3,47 +3,78 @@ import { IUser, IUserDetails } from "../../../../core/models/user.model";
 import { EUserActions, UserActions } from "../actions/user.actions";
 
 export interface IUserState {
-    users: IUser[];
-    selectedUser: IUserDetails;
-    repositories: IRepository[];
-    error: any;
-    selectedRepo: IRepository;
-    isLoading: boolean
-  }
-  
-  export const initialUserState: IUserState = {
-    users: [],
-    selectedUser: Object.assign({}),
-    repositories: [],
-    error: '',
-    selectedRepo: Object.assign({}),
-    isLoading: false
-  };
-  
+  users: IUser[];
+  selectedUser: IUserDetails;
+  repositories: IRepository[];
+  error: any;
+  selectedRepo: IRepository;
+  isLoading: boolean;
+  contributors: IUser[]
+}
 
-export function userReducers  (
-  
+export const initialUserState: IUserState = {
+  users: [],
+  selectedUser: Object.assign({}),
+  repositories: [],
+  error: '',
+  selectedRepo: Object.assign({}),
+  isLoading: false,
+  contributors: Object.assign({}),
+};
+
+
+export function userReducers(
+
   state = initialUserState,
   action: UserActions
 ): IUserState {
-  
+
   switch (action.type) {
+    case EUserActions.GetUsers: {
+      return {
+        ...state,
+        isLoading: true
+      };
+    }
     case EUserActions.GetUsersSuccess: {
       return {
         ...state,
-        users: action.payload
+        users: action.payload,
+        isLoading: false,
+        error: null
       };
     }
+    case EUserActions.GetUsersError: {
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
+      };
+    }
+    case EUserActions.GetUser: {
+      return {
+        ...state,
+        isLoading: true
+      };
+    }
+
     case EUserActions.GetUserSuccess: {
       return {
         ...state,
-        selectedUser: action.payload
+        selectedUser: action.payload,
+        isLoading: false
       };
     }
     case EUserActions.GetRepositoriesSuccess: {
       return {
         ...state,
         repositories: action.payload
+      };
+    }
+    case EUserActions.GetRpositoryContributorsSuccess: {
+      return {
+        ...state,
+        contributors: action.payload
       };
     }
 

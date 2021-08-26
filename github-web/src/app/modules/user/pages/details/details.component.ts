@@ -21,12 +21,12 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(new GetUser(this.route.snapshot.params.user));
     this.user$ = this.store.pipe(select(selectSelectedUser));
-    if(this.user$) {
+    if (this.user$) {
       this.store.dispatch(new GetRepositories(this.route.snapshot.params.user));
       this.userRepositories$ = this.store.pipe(select(selectRepositories));
     }
   }
   onNavigateToRepository(repository: IRepository) {
-    this._router.navigate([``]);
+    this._router.navigate([`${this._router.url}/${repository.name}/contributors`]);
   }
 }

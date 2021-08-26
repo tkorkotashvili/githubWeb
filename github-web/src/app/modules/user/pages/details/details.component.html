@@ -1,9 +1,9 @@
-<div class="container">
+<div *ngIf="user$ && userRepositories$; else noData" class="container">
     <div class="header sticky d-flex justify-content-center ">
         <h3 class="my-5">User Repositories List</h3>
     </div>
     <div class="row">
-        <div class="col-6">
+        <div class="col-12 col-sm-6 order-1">
             <ng-container *ngIf="user$">
                 <mat-card matRipple class="user-card cursor-pointer">
                     <mat-card-header>
@@ -27,7 +27,7 @@
             </ng-container>
         </div>
 
-        <div class="col-6 mb-5">
+        <div class="col-12 col-sm-6 order-2 mb-5">
 
             <table mat-table [dataSource]="userRepositories$ | async" class="mat-elevation-z8">
 
@@ -51,3 +51,9 @@
 
 
 </div>
+
+<ng-template #noData>
+    <div class="h-100 flex-perfect-center">
+        <h3>Here must be user data!</h3>
+    </div>
+</ng-template>

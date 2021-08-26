@@ -56,3 +56,13 @@ export const selectRepositories = createSelector(
   selectUsers,
   (state: IUserState) => state.repositories
 );
+
+export const selectIsLoading = createSelector(
+  selectUsers,
+  (state: IUserState) => state.isLoading
+);
+
+export const selectError = createSelector(
+  selectUsers,
+  (state: IUserState) => state.error
+)

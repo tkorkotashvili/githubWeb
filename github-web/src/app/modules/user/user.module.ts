@@ -39,6 +39,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatRippleModule } from '@angular/material/core';
 import { userReducers } from './store/reducers/user.reducer';
+import { RepositoryContributorsComponent } from './pages/repository-contributors/repository-contributors.component';
 export const MATERIAL_IMPORTS = [
   MatInputModule,
   MatButtonModule,
@@ -76,6 +77,7 @@ export const MATERIAL_IMPORTS = [
   declarations: [
     ListComponent,
     DetailsComponent,
+    RepositoryContributorsComponent,
 
   ],
   imports: [
